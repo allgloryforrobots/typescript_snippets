@@ -1,0 +1,1 @@
+const cars: string[] = ['Ford', 'Audi']
