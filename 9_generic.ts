@@ -46,7 +46,7 @@ const person = {
 
 
 // ================
-class Collection<T> {
+class Collection<T extends number | string | boolean> {
 
     // private _items: T[] = []
 
@@ -71,3 +71,49 @@ class Collection<T> {
 const strings = new Collection<string>(["I", "A"])
 strings.add("!")
 strings.remove("!")
+
+const numbers = new Collection<number>([1, 2])
+
+// const objs = new Collection( [{ a: 1 }, { b: 2 }] )
+// // объект не удалиться, говорим ts что коллекция работает с приминтивными типами данных выше
+// objs.remove({ a: 1 })
+
+// ===============
+interface Car {
+    model: string
+    year: number
+}
+
+function createAndValidateCar(model: string, year: number): Car {
+    const car: Partial<Car> = {
+
+    }
+
+    if (model.length > 3) {
+        car.model = model
+    }
+
+    if (year > 2000) {
+        car.year = year
+    }
+
+    return car as Car
+}
+
+const carsA: Array<string> = ['Ford', 'Audi']
+cars.shift()
+
+const carsB: Readonly<Array<string>>  = ['Ford', 'Audi']
+// carsB.shift() ошибка ведь только для чтения
+
+const ford: Readonly<Car>  = {
+    model: 'Ford',
+    year: 2020
+}
+
+// ford.model = 'BMW'
+
+
+
+
+
