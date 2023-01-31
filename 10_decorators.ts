@@ -16,7 +16,7 @@ function log3(target: any, propName: string | symbol, descriptor: PropertyDescri
 }
 
 @Log
-class Component {
+class Clazz {
 
     @Log2
     name: string
@@ -31,3 +31,35 @@ class Component {
     }
 
 }
+
+
+interface ComponentDecorator {
+    selector: string
+    template: string
+}
+
+
+// function Component(config: ComponentDecorator) {
+//     return function(Constructor: Function ) {
+//         return class extends Constructor {
+
+//         }
+//     }
+// }
+
+
+// @Component({
+//     selector: '#card',
+//     template: `<div class="card"></div>`
+// })
+// class CardComponent {
+
+//     constructor(public name: string) {
+
+//     }
+
+//     logName(): void {
+//         console.log(`Component Name: ${this.name}`)
+//     }
+
+// }
